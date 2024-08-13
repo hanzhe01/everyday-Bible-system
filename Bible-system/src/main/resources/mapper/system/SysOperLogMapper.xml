@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.youlintech.everydaybible.system.mapper.SysOperLogMapper">
+<mapper namespace="com.youlintech.bible.system.mapper.SysOperLogMapper">
 
 	<resultMap type="SysOperLog" id="SysOperLogResult">
 		<id     property="operId"         column="oper_id"        />
@@ -37,9 +37,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectOperLogList" parameterType="SysOperLog" resultMap="SysOperLogResult">
 		<include refid="selectOperLogVo"/>
 		<where>
-			<if test="operIp != null and operIp != ''">
-				AND oper_ip like concat('%', #{operIp}, '%')
-			</if>
 			<if test="title != null and title != ''">
 				AND title like concat('%', #{title}, '%')
 			</if>
