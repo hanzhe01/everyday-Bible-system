@@ -156,6 +156,12 @@
                 <version>${everydaybible.version}</version>
             </dependency>
 
+            <dependency>
+                <groupId>com.youlintech</groupId>
+                <artifactId>everydaybible-everyday</artifactId>
+                <version>${everydaybible.version}</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 
@@ -166,6 +172,7 @@
         <module>Bible-quartz</module>
         <module>Bible-generator</module>
         <module>Bible-common</module>
+        <module>Bible-everyday</module>
     </modules>
     <packaging>pom</packaging>
 

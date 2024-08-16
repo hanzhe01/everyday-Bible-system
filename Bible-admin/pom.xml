@@ -40,7 +40,11 @@
             <groupId>com.youlintech</groupId>
             <artifactId>everydaybible-generator</artifactId>
         </dependency>
-
+<!--        每日圣经-->
+        <dependency>
+            <groupId>com.youlintech</groupId>
+            <artifactId>everydaybible-everyday</artifactId>
+        </dependency>
     </dependencies>
 
     <build>

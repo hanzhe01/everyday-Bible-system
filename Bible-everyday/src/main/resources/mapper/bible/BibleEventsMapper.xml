@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.youlintech.bible.everyday.mapper.BibleEventsMapper">
+
+    <resultMap type="BibleEvents" id="TBibleEventsResult">
+        <result property="id"    column="id" />
+        <result property="verse"    column="verse" />
+        <result property="verseContent"    column="verse_content" />
+        <result property="bibleDate"    column="bible_date" />
+        <result property="historyTodayEvents"    column="history_today_events" />
+    </resultMap>
+
+    <select id="getOneByBibleDate" resultMap="TBibleEventsResult">
+        select
+       *
+        from t_bible_events
+        where
+        bible_date = #{bibleDate,jdbcType=TIMESTAMP}
+    </select>
+
+
+</mapper>
