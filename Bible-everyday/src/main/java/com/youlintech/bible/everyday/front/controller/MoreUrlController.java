@@ -14,11 +14,11 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @Api(tags="read more url")
 @RestController
-@RequestMapping("/more")
+@RequestMapping("/bible/front")
 public class MoreUrlController {
     @Autowired
     private RedisCache redisCache;
-    @GetMapping
+    @GetMapping("/more/getUrl")
     public AjaxResult getMoreUrl() {
         return AjaxResult.success("操作成功",redisCache.getCacheObject("sys_config:Bible.more.url"));
     }
