@@ -1,6 +1,7 @@
 package com.youlintech.bible.everyday.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.youlintech.bible.common.core.domain.AjaxResult;
 import com.youlintech.bible.everyday.domain.BibleEvents;
 
 import java.util.List;
@@ -29,6 +30,11 @@ public interface IBibleEventsService extends IService<BibleEvents> {
      */
     public String importBibleEvents(List<BibleEvents> bibleEventsList, String operName);
 
-
+    /**
+     * 新增每日圣经
+     * @param bibleEvents
+     * @return
+     */
+    public AjaxResult add(BibleEvents bibleEvents);
 
 }

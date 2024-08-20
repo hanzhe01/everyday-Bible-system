@@ -3,6 +3,7 @@ package com.youlintech.bible.everyday.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.youlintech.bible.common.core.domain.AjaxResult;
 import com.youlintech.bible.common.exception.ServiceException;
 import com.youlintech.bible.common.utils.StringUtils;
 import com.youlintech.bible.common.utils.bean.BeanValidators;
@@ -13,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.validation.Validator;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -80,6 +82,19 @@ public class BibleEventsServiceImpl extends ServiceImpl<BibleEventsMapper, Bible
             successMsg.insert(0, "恭喜您，数据已全部导入成功！共 " + successNum + " 条，数据如下：");
         }
         return successMsg.toString();
+    }
+
+    @Override
+    public AjaxResult add(BibleEvents bibleEvents) {
+        Date bibleDate = bibleEvents.getBibleDate();
+        BibleEvents oneByBibleDate = bibleEventsMapper.getOneByBibleDate(bibleDate);
+        if (oneByBibleDate == null) {
+            bibleEventsMapper.insert(bibleEvents);
+            return AjaxResult.success("新增成功");
+        }
+        bibleEvents.setId(oneByBibleDate.getId());
+        bibleEventsMapper.updateById(bibleEvents);
+        return AjaxResult.success("修改成功");
     }
 
 

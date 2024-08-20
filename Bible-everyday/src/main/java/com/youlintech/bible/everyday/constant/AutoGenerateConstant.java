@@ -7,7 +7,7 @@ public class AutoGenerateConstant {
     /**
      * 本地自动生成URL请求地址
      */
-    public static final String AUTO_GENERATE_URL = "http://127.0.0.1:8081/auto/Generate/everydayBible";
+    public static final String AUTO_GENERATE_URL = "http://127.0.0.1:7978/auto/Generate/everydayBible";
 
     /**
      * 自动生成的存储在redis中，存储key

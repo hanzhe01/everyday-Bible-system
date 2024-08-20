@@ -37,5 +37,8 @@ public class PetId extends BaseEntity
     @Excel(name = "白名单编号")
     @ApiModelProperty("白名单ID")
     private String petId;
-
+    /** 白名单编号 */
+    @Excel(name = "网址+uuid")
+    @ApiModelProperty("网址+url")
+    private String urlUuid;
 }

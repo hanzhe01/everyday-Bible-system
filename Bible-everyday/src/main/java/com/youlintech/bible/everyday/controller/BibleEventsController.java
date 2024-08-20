@@ -80,7 +80,7 @@ public class BibleEventsController extends BaseController
     @PostMapping
     public AjaxResult add(@RequestBody BibleEvents tBibleEvents)
     {
-        return toAjax(bibleEventsService.save(tBibleEvents));
+        return bibleEventsService.add(tBibleEvents);
     }
 
     /**
