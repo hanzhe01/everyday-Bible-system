@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.youlintech.bible.everyday.mapper.BackPictureMapper">
+
+    <resultMap type="BackPicture" id="BackPictureResult">
+        <result property="id"    column="id" />
+        <result property="uploadTime"    column="upload_time" />
+        <result property="imgName"    column="img_name" />
+        <result property="picture"    column="picture" />
+        <result property="isBg"    column="is_bg" />
+    </resultMap>
+    <select id="getOneByPicture" resultMap="BackPictureResult">
+        select
+        *
+        from t_back_picture
+        where
+        picture = #{picture,jdbcType=VARCHAR}
+    </select>
+
+
+</mapper>
