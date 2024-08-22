@@ -103,6 +103,6 @@ public class BackPictureController extends BaseController
 	@DeleteMapping("/{ids}")
     public AjaxResult remove(@PathVariable Long[] ids)
     {
-        return toAjax(backPictureService.removeByIds(Arrays.asList(ids)));
+        return backPictureService.removeBackPictureByIds(Arrays.asList(ids));
     }
 }

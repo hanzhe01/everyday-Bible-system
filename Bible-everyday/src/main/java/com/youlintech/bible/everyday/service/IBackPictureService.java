@@ -42,6 +42,6 @@ public interface IBackPictureService extends IService<BackPicture> {
      * @param list  id集合
      * @return
      */
-    public AjaxResult removeBackPictureByIds(Collection<?> list);
+    public AjaxResult removeBackPictureByIds(Collection<Long> list);
 
 }

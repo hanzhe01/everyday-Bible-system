@@ -1,5 +1,5 @@
 # 指定环境的默认配置
 spring:
   profiles:
-#    active: prod
-    active: dev
+    active: prod
+#    active: dev

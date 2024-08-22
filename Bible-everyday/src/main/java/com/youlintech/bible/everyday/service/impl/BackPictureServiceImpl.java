@@ -99,16 +99,16 @@ public class BackPictureServiceImpl extends ServiceImpl<BackPictureMapper, BackP
     }
 
     @Override
-    public AjaxResult removeBackPictureByIds(Collection<?> list) {
+    public AjaxResult removeBackPictureByIds(Collection<Long> list) {
         BackPicture redisBackPicture = getRedisBackPicture();
         if (redisBackPicture == null) {
-            AjaxResult.warn("未设置背景图片！");
+            return AjaxResult.warn("未设置背景图片！");
         }
-        list.forEach(id -> {
-            if (redisBackPicture != null && id.equals(redisBackPicture.getId())) {
-                AjaxResult.warn("删除失败，存在设置的背景图片！");
+        for (Long id : list) {
+            if (id.equals(redisBackPicture.getId())) {
+                return AjaxResult.warn("删除失败，存在设置的背景图片！");
             }
-        });
+        }
         this.removeByIds(list);
         return AjaxResult.success("删除成功");
     }
