@@ -13,5 +13,5 @@ public class MoreVO implements Serializable {
 
     private String moreUrl;
     private String backImg;
-    private String backImgId;
+    private Long backImgId;
 }

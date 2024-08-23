@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,6 +34,16 @@ public class BibleFrontViewController {
     private final IBibleEventsService bibleEventsService;
     private final IPetIdService petIdService;
 
+    private static LocalDate getCurrentDateTime() {
+        // 获取美国东部时间区
+        ZoneId usEasternTimeZone = ZoneId.of("America/New_York");
+
+        // 获取美国东部时间的当前时间
+        ZonedDateTime nowTime = ZonedDateTime.now(usEasternTimeZone);
+
+        // 提取日期部分
+        return nowTime.toLocalDate();
+    }
     @PostMapping("/getBibleEvents")
     public AjaxResult getBibleEvents(@RequestParam(value = "petId") String petId) {
         if (petId == null) {
@@ -41,8 +53,9 @@ public class BibleFrontViewController {
         if (one == null) {
             return AjaxResult.error("白名单ID不存在");
         }
-        //获取当前的日期
-        LocalDate dateNow = LocalDate.now();
+        // 获取美国东部时间的当前日期
+        LocalDate dateNow = getCurrentDateTime();
+        log.info("美国当前纽约时间dateNow:{}", dateNow);
         List<BibleEventsVO> bibleEventsList = new ArrayList<>();
         for (int i = 0; i < 4; i++) {
             LocalDate dateBefore = dateNow.minusDays(i);
