@@ -44,4 +44,9 @@ public interface IBackPictureService extends IService<BackPicture> {
      */
     public AjaxResult removeBackPictureByIds(Collection<Long> list);
 
+    /**
+     * 登陆后设置缓存背景图片url
+     */
+    public void setBackPicture();
+
 }

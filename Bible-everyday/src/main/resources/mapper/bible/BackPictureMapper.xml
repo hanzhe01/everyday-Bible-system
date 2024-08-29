@@ -16,8 +16,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         *
         from t_back_picture
         where
-        picture = #{picture,jdbcType=VARCHAR}
+        is_bg = #{picture,jdbcType=VARCHAR}
     </select>
+    <select id="getOneByIsBg" resultType="com.youlintech.bible.everyday.domain.BackPicture"></select>
 
 
 </mapper>

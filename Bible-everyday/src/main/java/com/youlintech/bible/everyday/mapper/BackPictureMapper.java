@@ -19,4 +19,10 @@ public interface BackPictureMapper extends BaseMapper<BackPicture> {
      * @return
      */
     BackPicture getOneByPicture(@Param("picture") String picture);
+    /**
+     * 根据是否是背景图片查询对象
+     * @param isBg
+     * @return
+     */
+    BackPicture getOneByIsBg(@Param("isBg") Integer isBg);
 }

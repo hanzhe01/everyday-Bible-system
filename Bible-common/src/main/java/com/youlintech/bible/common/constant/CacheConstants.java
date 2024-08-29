@@ -41,4 +41,9 @@ public class CacheConstants
      * 登录账户密码错误次数 redis key
      */
     public static final String PWD_ERR_CNT_KEY = "pwd_err_cnt:";
+
+    /**
+     * 背景图片url
+     */
+    public static final String BACK_PICTURE_KEY = "backPicture:picture:url";
 }

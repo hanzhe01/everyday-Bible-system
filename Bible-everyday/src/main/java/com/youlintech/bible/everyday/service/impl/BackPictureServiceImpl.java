@@ -48,7 +48,7 @@ public class BackPictureServiceImpl extends ServiceImpl<BackPictureMapper, BackP
     public AjaxResult addBackPicture(BackPicture backPicture) {
         backPicture.setUploadTime(DateUtils.getNowDate());
         PictureEnum isBg = backPicture.getIsBg();
-        if (!isBg.equals(PictureEnum.IS_ENABLE)) {
+        if (isBg == null || !isBg.equals(PictureEnum.IS_ENABLE) ) {
             this.save(backPicture);
             return AjaxResult.success(backPicture);
         }
@@ -111,6 +111,16 @@ public class BackPictureServiceImpl extends ServiceImpl<BackPictureMapper, BackP
         }
         this.removeByIds(list);
         return AjaxResult.success("删除成功");
+    }
+
+    @Override
+    public void setBackPicture() {
+        BackPicture oneByIsBg = backPictureMapper.getOneByIsBg(PictureEnum.IS_ENABLE.getCode());
+        if (oneByIsBg == null) {
+            return;
+        }
+        redisCache.setCacheObject(BackPictureConstant.BACK_PICTURE_KEY, oneByIsBg.getPicture());
+        redisCache.setCacheObject(BackPictureConstant.BACK_PICTURE_ID_KEY, oneByIsBg.getId());
     }
 
     private BackPicture getRedisBackPicture() {
